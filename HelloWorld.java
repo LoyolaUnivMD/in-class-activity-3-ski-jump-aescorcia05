@@ -3,9 +3,8 @@
 // Due Date: 02/01/24
 // In-class activity: 3
 // Problem Statement:  Winter is coming! One winter sport is the ski jump, where the score is determined by the distance traveled after skiing down a ramp and into the air. What type of speed does a ski jumper need to achieve on the ramp to make a good distance on their jump? Let’s make a program to calculate the distance traveled based on speed and determine how many points they’d receive if they went that distance.
-// System.out.println: XXX
-// Output:  XXX
-// Credits: XXX
+// System.out.println: hill type and jumper speed
+// Output:  distance travelled, points earned, and comment
 
 import java.util.Scanner;
 
