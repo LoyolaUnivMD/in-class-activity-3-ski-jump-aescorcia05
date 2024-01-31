@@ -7,48 +7,55 @@
 // Output:  XXX
 // Credits: XXX
 
-import java.util.Scanner
+import java.util.Scanner;
 
 class HelloWorld {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in)
+        Scanner input = new Scanner(System.in);
 
         //Getting inputs from user
-        System.out.println("Did the jumper jump from a normal (N) hill or a large (L) hill? ")
-        char hill_type = inpiut.nextChar()
+        String hillType;
+        double jumperSpeed;
 
-        System.out.println("What is the jumper speed? ")
-        double jumper_speed = input.nextDouble
+        do {
+            System.out.println("Did the jumper jump from a normal (N) hill or a large (L) hill? ");
+            hillType = input.nextLine();
+        } while (!(hillType.equals("N") || hillType.equals("L")));
+        do {
+            System.out.println("What is the jumper speed? (m/s) ");
+            jumperSpeed = input.nextDouble();
+        } while (jumperSpeed < 0 || jumperSpeed > 100);
+
+        //Declaring variable types
+        double height = 0;
+        double pointsMeter = 0;
+        double par = 0;
         
         //Determining what the hill's height, points per meter, and par are based on the System.out.println
-        if (hill_type == "N")
-          height = 46
-          points_meter = 2
-          par = 90
-        elif hill_type == "large":
-          height = 70
-          points_meter = 1.8
-          par = 120
-        else:
-          System.out.println("Error: program did not recognize hill type.")
+        if (hillType.equals("N")) {
+            height = 46;
+            pointsMeter = 2;
+            par = 90;
+        } else if (hillType.equals("L")) {
+            height = 70;
+            pointsMeter = 1.8;
+            par = 120;
+        } else {
+            System.out.println("Error: program did not recognize hill type.");
+        }
         
-        if hill_type == "normal" or hill_type == "large":
-          time_in_air = math.sqrt((2*height)/9.8)
-          distance_travelled = jumper_speed * time_in_air
-          total_points = 60 + (distance_travelled - par)*points_meter    
-          
-          System.out.println(f"The jumper travelled {distance_travelled:.3f} and received {total_points:.2f} total points.") 
-          
-          if total_points >= 61:
-            System.out.println("Great job for doing better than par!")
-          elif total_points < 10:
-            System.out.println("What happened??")
-          else:
-            System.out.println("Sorry you didn’t go very far")
+        if (hillType.equals("N") || hillType.equals("N")) {
+            double timeInAir = Math.sqrt((2 * height) / 9.8);
+            double distanceTravelled = jumperSpeed * timeInAir;
+            double totalPoints = 60 + (distanceTravelled - par) * pointsMeter;
 
 
+            System.out.println("The jumper travelled " + String.format("%,.2f", distanceTravelled) + " meters and received " + Math.round(totalPoints) + " total points.");
 
-        
+            if (totalPoints >= 61) {System.out.println("Great job for doing better than par!");}
+            else if (totalPoints < 10) {System.out.println("What happened??");}
+            else {System.out.println("Sorry you didn’t go very far");}
+        }
     }
 }
